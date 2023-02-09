@@ -1,0 +1,173 @@
+﻿<!-- Category Start -->
+<div class="container-fluid bg-light bg-icon my-5 py-6">
+    <div class="container">
+        <div class="section-header text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+            <h1 class="display-5 mb-3">Our Categories</h1>
+            <p>Every thing you are dream.</p>
+        </div>
+        <div class="row g-4">
+            @foreach (var item in (List<Category>)ViewBag.category)
+            {
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="bg-white text-center h-100 p-4 p-xl-5">
+                        <img class="img-fluid mb-4" src="~/@item.Photo" alt="">   
+                        <h4 class="mb-3">@item.Name</h4>
+                        <p class="mb-4">@item.Description.</p>
+                        <a class="btn btn-outline-primary border-2 py-2 px-4 rounded-pill" href="/Home/Productcat/@item.Id">Show Products</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<!-- Category End -->
+<!-- Product Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-0 gx-5 align-items-end">
+            <div class="col-lg-6">
+                <div class="section-header text-start mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                    <h1 class="display-5 mb-3">Our Products</h1>
+                    <p>You can dreram and we are going to real it.</p>
+                </div>
+            </div>
+        </div>
+        <div class="tab-content">
+            <div class="tab-pane fade show p-0 active">
+                <div class="row g-4">
+                    @foreach (var item in (List<Product>)ViewBag.product)
+                    {
+                        <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                            <div class="product-item">
+                                <div class="position-relative bg-light overflow-hidden">
+                                    <img class="img-fluid w-100" src="~/@item.Photo" alt="">
+                                    <div class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">@item.Quantity</div>
+                                </div>
+                                <div class="text-center p-4">
+                                    <a class="d-block h5 mb-2" href="">@item.Name</a>
+                                    @if (item.Priceafterdiscount == 0 || item.Priceafterdiscount == null)
+                                    {
+                                        <span class="text-primary me-1">$@item.Price</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-primary me-1">$@item.Priceafterdiscount</span>
+                                        <span class="text-body text-decoration-line-through">$@item.Price</span>
+                                    }
+                                </div>
+                                <div class="d-flex border-top">
+                                    <small class="w-50 text-center border-end py-2">
+                                        <a class="text-body" href="/Home/Productdetails/@item.Id"><i class="fa fa-eye text-primary me-2"></i>View detail</a>
+                                    </small>
+                                    <small class="w-50 text-center py-2">
+                                        <a class="text-body" href="/Home/Cart"><i class="fa fa-shopping-bag text-primary me-2"></i>Add to cart</a>
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Product End -->
+
+<!-- Feedback Start -->
+<div class="container-fluid bg-light bg-icon py-6 mb-5">
+    <div class="container">
+        <div class="section-header text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+            <h1 class="display-5 mb-3">Customer Review</h1>
+            <p>Show what our Customer feedback.</p>
+        </div>
+        <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
+            @foreach (var item in (List<Review>)ViewBag.Review)
+            {
+                <div class="testimonial-item position-relative bg-white p-5 mt-4">
+                    <i class="fa fa-quote-left fa-3x text-primary position-absolute top-0 start-0 mt-n4 ms-5"></i>
+                    <p class="mb-4">@item.Description.</p>
+                    <div class="d-flex align-items-center">
+                        <div class="ms-3">
+                            <h5 class="mb-1">@item.Name</h5>
+                            <span>@item.Email</span>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<!-- Feedback End -->
+
+<!-- ======= Contact Section ======= -->
+<section id="contact" class="contact section-bg">
+    <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+            <h2>Contact us</h2>
+            <p>Contact us to order your products and to get you home without effort.</p>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="info-box mb-4">
+                    <i class="bx bx-map"></i>
+                    <h3>Our Address</h3>
+                    <p>123 Street, sedi bashr ,Alexandria</p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="info-box  mb-4">
+                    <i class="bx bx-envelope"></i>
+                    <h3>Email Us</h3>
+                    <p>ahm301033@gmail.com</p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="info-box  mb-4">
+                    <i class="bx bx-phone-call"></i>
+                    <h3>Call Us</h3>
+                    <p>+0 127 565 8420</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-lg-6 ">
+                <iframe class="mb-4 mb-lg-0" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" style="border:0; width: 100%; height: 384px;" allowfullscreen></iframe>
+            </div>
+
+            <div class="col-lg-6">
+                <form asp-controller="Home" asp-action="Savereview" method="post">
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <input type="text" name="Name" class="form-control" id="Name" placeholder="Your Name" required>
+                        </div>
+                        <div class="col-md-6 form-group mt-3 mt-md-0">
+                            <input type="email" class="form-control" name="Email" id="Email" placeholder="Your Email" required>
+                        </div>
+                    </div>
+                    <div class="form-group mt-3">
+                        <input type="text" class="form-control" name="Subject" id="Subject" placeholder="Subject" required>
+                    </div>
+                    <div class="form-group mt-3">
+                        <textarea class="form-control" name="Description" rows="5" placeholder="Description" required></textarea>
+                    </div>
+                    <div class="my-3">
+                        <div class="loading">Loading</div>
+                        <div class="error-message"></div>
+                        <div class="sent-message">Your message has been sent. Thank you!</div>
+                    </div>
+                    <div class="text-center"><button class="btn btn-primary" type="submit">Send Message</button></div>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+<!-- End Contact Section -->

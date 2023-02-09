@@ -1,0 +1,76 @@
+﻿@model List<ProductImage>
+    <!-- ======= Breadcrumbs ======= -->
+<section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>Porduct Details :</h2>          
+        </div>
+    </div>
+</section><!-- End Breadcrumbs -->
+
+<br />
+<br />
+<!-- ======= Portfolio Details Section ======= -->
+<section id="portfolio-details" class="portfolio-details">
+    <div class="container">
+        <div class="row gy-4">
+            <div class="col-lg-8">
+                <div class="portfolio-details-slider swiper">
+                    <div class="swiper-wrapper align-items-center">
+                        @foreach (var item in (List<Product>)ViewBag.product)
+                        {
+                            <div class="swiper-slide">
+                                <img src="~/@item.Photo" alt="">
+                            </div>
+                        }
+                        @foreach (var item in Model)
+                        {
+                            <div class="swiper-slide">
+                                <img src="~/@item.Image" alt="">
+                            </div>
+                        }
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                @foreach (var item in (List<Product>)ViewBag.product)
+                {
+                    <div class="portfolio-info">
+                        <h3>Product information</h3>
+                        <ul>
+                            <li><strong>Name</strong>: @item.Name</li>
+                            <li><strong>Supplir Name</strong>: @item.SupplierName</li>
+                            <li><strong>Project date</strong>: @item.EntryDate</li>
+                        </ul>
+                        @if (item.Priceafterdiscount == 0 || item.Priceafterdiscount == null)
+                        {
+                            <span class="text-primary me-1"><strong>Price</strong>:  $@item.Price</span>
+                        }
+                        else
+                        {
+                            <span class="text-primary me-1"><strong>New Price</strong>:  $@item.Priceafterdiscount</span>
+                            <span class="text-body text-decoration-line-through"><strong>Price</strong>:  $@item.Price</span>
+                        }
+                    </div>
+                    <br />
+                    <div class="portfolio-description">
+                        <h4>This is porduct description :</h4>
+                        <br />
+                        <p class="alert-info">   @item.Description</p>
+                    </div>
+                    <br />                  
+                    <div class="d-flex border-top">
+                        <small class="w-50 text-center py-2">
+                            <a class="text-body btn btn-primary" href="/Home/Cart"><i class="fa fa-shopping-bag text-primary me-2"></i>Add to cart</a>
+                        </small>
+                    </div>
+                }
+
+            </div>
+
+        </div>
+
+    </div>
+</section><!-- End Portfolio Details Section -->
